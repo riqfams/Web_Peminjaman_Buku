@@ -12,7 +12,7 @@
             <th>Jumlah</th>
             <th>Denda</th>
         </tr>
-        @foreach ($buku as $b)
+        @foreach ($books as $b)
             <tr>
                 <td>{{ $b->idBuku }}</td>
                 <td>{{ $b->judul }}</td>
