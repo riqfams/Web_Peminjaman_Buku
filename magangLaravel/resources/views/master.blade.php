@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Belajar Laravel</title>
     <!-- <link rel="stylesheet" type="text/css" href="asset/css/style.css"> -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/content.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/navbar.css') }}">
 
     <!--Bootstrap CSS-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
@@ -18,9 +19,9 @@
     <header>
 		<nav>
             <ul>
-                <li><a href="list">List Buku</a></li>
-                <li><a href="tambah">Tambah Buku</a></li>
-                <li><a href="edit">Edit Buku</a></li>
+                <li><a href="/buku/list">List Buku</a></li>
+                <li><a href="/buku/tambah">Tambah Buku</a></li>
+                <li><a href="/buku/edit">Edit Buku</a></li>
             </ul>
 		</nav> 
         <!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
