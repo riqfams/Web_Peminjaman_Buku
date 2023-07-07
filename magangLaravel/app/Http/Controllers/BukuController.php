@@ -8,9 +8,12 @@ use Illuminate\Support\Facades\DB;
 class BukuController extends Controller
 {
     public function list() {
-        $buku = DB::table('buku')->get();
+        // mengambil data dari table 
+    	$books = DB::table('buku')->get();
+        //dd($books);
 
-        return view('listBuku', ['buku' => $buku]);
+    	// mengirim data ke view index
+        return view('ListBuku',['books' => $books]); 
     }
     
     public function tambah() {
