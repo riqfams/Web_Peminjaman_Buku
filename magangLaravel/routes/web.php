@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('listBuku');
-});
+// Route::get('/', function () {
+//     return view('listBuku');
+// });
 
 //Route::prefix('buku')->group(function(){
-    Route::get('buku/list', 'App\Http\Controllers\BukuController@list');
+    Route::get('/', 'App\Http\Controllers\BukuController@list');
     Route::get('buku/tambah', 'App\Http\Controllers\BukuController@tambah');
     Route::get('buku/edit', 'App\Http\Controllers\BukuController@edit');
 //});
