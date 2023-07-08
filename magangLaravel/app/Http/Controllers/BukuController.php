@@ -9,18 +9,18 @@ class BukuController extends Controller
 {
     public function list() {
         // mengambil data dari table 
-    	$books = DB::table('buku')->get();
+    	$buku = DB::table('buku')->get();
         //dd($books);
 
     	// mengirim data ke view index
-        return view('ListBuku',['books' => $books]); 
+        return view('buku/ListBuku',['buku' => $buku]); 
     }
     
     public function tambah() {
-        return view('tambahBuku');
+        return view('buku/tambahBuku');
     }
    
     public function edit() {
-        return view('editBuku');
+        return view('buku/editBuku');
     }
 }
