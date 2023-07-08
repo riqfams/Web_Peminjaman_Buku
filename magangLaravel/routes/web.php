@@ -26,4 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('anggota/list', 'App\Http\Controllers\AnggotaController@list');
 
 
+Route::get('prodi/list', 'App\Http\Controllers\ProdiController@list');
+
+
 
