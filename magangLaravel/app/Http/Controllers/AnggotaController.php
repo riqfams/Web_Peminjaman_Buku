@@ -5,16 +5,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Anggota;
 
 class AnggotaController extends Controller
 {
     public function list() {
-        // mengambil data dari table 
-    	$anggota = DB::table('anggota')->get();
-        //dd($books);
+    	 //query builder
+        //$anggota = DB::table('anggota')->get();
 
-    	// mengirim data ke view index
+        //eloquent -> harus bikin fillable di model
+        $anggota = Anggota::with('prodi')->get();
+
         return view('anggota/listAnggota',['anggota' => $anggota]); 
+
+        
     }
     
     // public function tambah() {
