@@ -26,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($books as $b)
+                    @foreach ($buku as $b)
                         <tr>
                             <td>{{ $b->idBuku }}</td>
                             <td>{{ $b->judul }}</td>
