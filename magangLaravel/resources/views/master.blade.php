@@ -19,9 +19,10 @@
     <header>
 		<nav>
             <ul>
-                <li><a href="/buku/list">List Buku</a></li>
-                <li><a href="/buku/tambah">Tambah Buku</a></li>
-                <li><a href="/buku/edit">Edit Buku</a></li>
+                <li><a href="/buku/list">Data Buku</a></li>
+                <li><a href="/anggota/list">Data Anggota</a></li>
+                <li><a href="/pinjam-buku">Peminjaman Buku</a></li>
+                <li><a href="/kembalikan-buku">Pengembalian Buku</a></li>
             </ul>
 		</nav> 
         <!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">

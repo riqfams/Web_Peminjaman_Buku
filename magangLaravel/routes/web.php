@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/buku/tambah', 'App\Http\Controllers\BukuController@tambah');
     Route::get('/buku/edit', 'App\Http\Controllers\BukuController@edit');
 //});
-
+Route::get('anggota/list', 'App\Http\Controllers\AnggotaController@list');
 
 
 
