@@ -14,16 +14,30 @@
     font-size: 24px;
 }
 
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .btnAdd{
-    display: inline-block;
     text-align: center;
     border-radius: 12px;
     color: white;
-    background-color: blue;
+    background-color: royalblue;
     padding: 8px;
-    justify-content: right;
+    margin-left: 16px;
 }
 
+.btnProdi{
+    text-align: center;
+    margin-right: 16px;
+    border-radius: 12px;
+    color: white;
+    background-color: royalblue;
+    padding: 8px;
+
+}
 
 .tableContainer{
     /* background-color: red; */
