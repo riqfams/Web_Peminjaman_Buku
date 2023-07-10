@@ -21,7 +21,7 @@
             <ul>
                 <li><a href="/buku/list">Data Buku</a></li>
                 <li><a href="/anggota/list">Data Anggota</a></li>
-                <li><a href="/pinjam-buku">Peminjaman Buku</a></li>
+                <li><a href="/peminjamanBuku/list">Peminjaman Buku</a></li>
                 <li><a href="/kembalikan-buku">Pengembalian Buku</a></li>
             </ul>
 		</nav> 
