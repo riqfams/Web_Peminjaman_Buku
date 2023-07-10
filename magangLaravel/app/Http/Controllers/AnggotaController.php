@@ -14,6 +14,11 @@ class AnggotaController extends Controller
         //$anggota = DB::table('anggota')->get();
 
         //eloquent -> harus bikin fillable di model
+
+        //lazy loading
+        //$anggota = Anggota::all();
+        
+        //eager loading
         $anggota = Anggota::with('prodi')->get();
 
         return view('anggota/listAnggota',['anggota' => $anggota]); 
