@@ -17,6 +17,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Nama</th>
+                        <th>Anggota</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -25,6 +26,11 @@
                         <tr>
                             <td>{{ $p->id }}</td>
                             <td>{{ $p->name }}</td>
+                            <td>
+                                @foreach ($p->anggota as $anggota)
+                                    {{$anggota['nama']}} <br>
+                                @endforeach
+                            </td>
                             <td>
                                 <a class="btnEdit" href="/buku/edit/{{$p->id}}">
                                     <i class="bi bi-pencil-square">edit</i>
