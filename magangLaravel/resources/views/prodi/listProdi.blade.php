@@ -17,7 +17,6 @@
                     <tr>
                         <th>ID</th>
                         <th>Nama</th>
-                        <th>Anggota</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -26,16 +25,15 @@
                         <tr>
                             <td>{{ $p->id }}</td>
                             <td>{{ $p->name }}</td>
+                            
                             <td>
-                                @foreach ($p->anggota as $anggota)
-                                    {{$anggota['nama']}} <br>
-                                @endforeach
-                            </td>
-                            <td>
-                                <a class="btnEdit" href="/buku/edit/{{$p->id}}">
+                                <a class="btnDetail" href="/prodi/detail/{{$p->id}}">
+                                    <i class="bi bi-pencil-square">Detail</i>
+                                </a>
+                                <a class="btnEdit" href="/prodi/edit/{{$p->id}}">
                                     <i class="bi bi-pencil-square">edit</i>
                                 </a>
-                                <a class="btnRemove" href="/buku/hapus/{{$p->id}}"> 
+                                <a class="btnRemove" href="/prodi/hapus/{{$p->id}}"> 
                                     <i class="bi bi-trash">apus</i>
                                 </a>
                             </td>   
