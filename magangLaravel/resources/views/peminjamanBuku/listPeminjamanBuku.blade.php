@@ -7,13 +7,9 @@
         <span>List Peminjaman Buku</span>
     </div>
     <div class="row">
-        <a class="btnAdd" href="/buku/tambah" role="button"> 
+        <a class="btnAdd" href="/peminjamanBuku/tambah" role="button"> 
             <i class="bi bi-plus-lg"></i>
             <span class="btnLabel">Tambah data</span>
-        </a>
-        <a class="btnProdi" href="/prodi/list" role="button"> 
-            <i class="bi bi-plus-lg"></i>
-            <span class="btnLabel">List Prodi</span>
         </a>
         <div class="tableContainer">
             <table class="table-div">
@@ -38,10 +34,10 @@
                             <td>{{ $pb->tanggalPinjam }}</td>
                             <td>{{ $pb->tanggalKembali }}</td>
                             <td>
-                                <a class="btnEdit" href="/buku/edit/{{$pb->id}}">
+                                <a class="btnEdit" href="/peminjamanBuku/edit/{{$pb->id}}">
                                     <i class="bi bi-pencil-square">edit</i>
                                 </a>
-                                <a class="btnRemove" href="/buku/hapus/{{$pb->id}}"> 
+                                <a class="btnRemove" href="/peminjamanBuku/hapus/{{$pb->id}}"> 
                                     <i class="bi bi-trash">apus</i>
                                 </a>
                             </td>   

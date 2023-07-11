@@ -10,6 +10,8 @@ class PeminjamanBuku extends Model
     use HasFactory;
 
     protected $table = 'peminjaman_buku';
+    protected $fillable = ['idAnggota', 'idBuku', 'tanggalPinjam', 'tanggalKembali'];
+
     /*
     public function buku()
     {
