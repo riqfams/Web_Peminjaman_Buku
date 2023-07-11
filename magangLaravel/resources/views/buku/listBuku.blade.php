@@ -15,7 +15,7 @@
             <table class="table-div">
                 <thead class="thead-primary">
                     <tr>
-                        <th>ID Buku</th>
+                        <th>No</th>
                         <th>Judul</th>
                         <th>Penulis</th>
                         <th>Penerbit</th>
@@ -26,7 +26,7 @@
                 <tbody>
                     @foreach ($buku as $b)
                         <tr>
-                            <td>{{ $b->id }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $b->judul }}</td>
                             <td>{{ $b->penulis }}</td>
                             <td>{{ $b->penerbit }}</td>
