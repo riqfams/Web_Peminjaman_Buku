@@ -10,6 +10,7 @@ class Anggota extends Model
     use HasFactory;
 
     protected $table = 'anggota';
+    protected $fillable = ['nama', 'kelamin', 'nim', 'prodi_id', 'alamat'];
    
     public function prodi()
     {
