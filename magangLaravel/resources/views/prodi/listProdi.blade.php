@@ -2,7 +2,10 @@
 @section('konten')
 
 <div class="pageSection">
-    <x-alert message="ini list prodi" type="warning"/>
+    @if (Session::has('status'))
+        <x-alert message="{{ Session::get('message') }}" type="success"/>
+    @endif
+
     <div class="pageTitle">
         <span>List Prodi</span>
     </div>

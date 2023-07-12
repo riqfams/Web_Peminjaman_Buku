@@ -2,7 +2,10 @@
 @section('konten')
 
 <div class="pageSection">
-    <x-alert message="ini list anggota" type="success"/>
+    @if (Session::has('status'))
+        <x-alert message="{{ Session::get('message') }}" type="success"/>
+    @endif
+
     <div class="pageTitle">
         <span>List Anggota</span>
     </div>
@@ -37,7 +40,7 @@
                                 <a class="btnDetail" href="/anggota/detail/{{$a->id}}">
                                     <i class="bi bi-pencil-square">detail</i>
                                 </a>
-                                <a class="btnEdit" href="/buku/edit/{{$a->id}}">
+                                <a class="btnEdit" href="/anggota/edit/{{$a->id}}">
                                     <i class="bi bi-pencil-square">edit</i>
                                 </a>
                                 <a class="btnRemove" href="/buku/hapus/{{$a->id}}"> 
