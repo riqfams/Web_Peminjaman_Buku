@@ -2,7 +2,6 @@
 @section('konten')
 
 <div class="pageSection">
-    <x-alert message="ini list buku" type="primary"/>
     <div class="pageTitle">
         <span>{{ $buku->judul }}</span>
     </div>

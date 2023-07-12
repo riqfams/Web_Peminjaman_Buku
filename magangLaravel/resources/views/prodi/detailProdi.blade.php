@@ -2,7 +2,6 @@
 @section('konten')
 
 <div class="pageSection">
-    <x-alert message="ini detail prodi" type="primary"/>
     <div class="pageTitle">
         <span> Prodi {{ $prodi->name }}</span>
     </div>

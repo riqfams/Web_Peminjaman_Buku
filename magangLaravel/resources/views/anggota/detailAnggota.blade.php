@@ -2,7 +2,6 @@
 @section('konten')
 
 <div class="pageSection">
-    <x-alert message="ini detail anggota" type="primary"/>
     <div class="pageTitle">
         <span>Data {{ $anggota->nama }}</span>
     </div>
