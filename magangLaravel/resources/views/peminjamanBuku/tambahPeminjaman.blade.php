@@ -1,9 +1,9 @@
 @extends('master')
 @section('konten')
-    Tambah Peminjaman Buku
-    <x-alert message="ini tambah peminjaman buku" type="success"/>
-     
-    <div class="mt-5 col-8 m-auto">
+<div class="pageTitle">
+    <span>Tambah Peminjaman Buku</span>
+</div>
+    <div class="mt-5 col-5 m-auto">
         <form action="/peminjamanBuku/store" method="post">
             @csrf
             <div class="mb-3">

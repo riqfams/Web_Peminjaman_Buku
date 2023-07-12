@@ -1,9 +1,9 @@
 @extends('master')
 @section('konten')
-    Tambah Buku
-    <x-alert message="ini tambah buku" type="success"/>
-     
-    <div class="mt-5 col-8 m-auto">
+    <div class="pageTitle">
+        <span>Tambah Buku</span>
+    </div>
+    <div class="mt-5 col-5 m-auto">
         <form action="/buku/store" method="post">
             @csrf
             <div class="mb-3">
