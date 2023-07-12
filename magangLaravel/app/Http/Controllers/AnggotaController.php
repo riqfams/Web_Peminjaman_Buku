@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Anggota;
 use App\Models\Prodi;
+use Illuminate\Support\Facades\Session;
 
 class AnggotaController extends Controller
 {
@@ -35,12 +36,33 @@ class AnggotaController extends Controller
     }
    
     public function store(Request $request){
-        $anggota = Anggota::create($request->all());
-        return redirect()->to('/anggota/list')->with('message', 'Data anggota berhasil ditambahkan');
+        $validated = $request->validate([
+            'nim' => 'unique:anggota|max:10'
+        ]);
 
+        $anggota = Anggota::create($request->all());
+
+        if($anggota){
+            Session::flash('status', 'success');
+            Session::flash('message', 'Data anggota berhasil ditambahkan');
+        }
+        return redirect()->to('/anggota/list');
     }
 
-    // public function edit() {
-    //     return view('editBuku');
-    // }
+    public function edit(Request $request, $id){
+        $anggota = Anggota::with('prodi')->findOrFail($id);
+        $prodi = Prodi::where('id', '!=', $anggota->prodi_id)->get(['id', 'name']);
+        return view('anggota/editAnggota', ['anggota' => $anggota, 'prodi' => $prodi]);
+    }
+
+    public function update(Request $request, $id) {
+        $anggota = Anggota::findOrFail($id);
+        $anggota->update($request->all());
+
+        if($anggota){
+            Session::flash('status', 'success');
+            Session::flash('message', 'Data anggota berhasil diubah');
+        }
+        return redirect()->to('/anggota/list');
+    }
 }

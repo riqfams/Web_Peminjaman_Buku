@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Buku;
+use Illuminate\Support\Facades\Session;
 
 class BukuController extends Controller
 {
@@ -27,18 +28,28 @@ class BukuController extends Controller
     }
 
     public function store(Request $request){
-        // $buku = new Buku;
-        // $buku->judul = $request->judul;
-        // $buku->penulis = $request->penulis;
-        // $buku->penerbit = $request->penerbit;
-        // $buku->tahunTerbit = $request->tahunTerbit;
-        // $buku->save();
-
         $buku = Buku::create($request->all());
-        return redirect()->to('/buku/list')->with('message', 'Data buku berhasil ditambahkan');
+
+        if($buku){
+            Session::flash('status', 'success');
+            Session::flash('message', 'Data buku berhasil ditambahkan');
+        }
+        return redirect()->to('/buku/list');
     }
    
-    public function edit() {  
-        return view('buku/editBuku');
+    public function edit(Request $request, $id) {  
+        $buku = Buku::findOrFail($id);
+        return view('buku/editBuku', ['buku' => $buku]);
+    }
+
+    public function update(Request $request, $id){
+        $buku = Buku::findOrFail($id);
+        $buku->update($request->all());
+
+        if($buku){
+            Session::flash('status', 'success');
+            Session::flash('message', 'Data buku berhasil diubah');
+        }
+        return redirect()->to('/buku/list');
     }
 }
