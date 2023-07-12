@@ -1,9 +1,19 @@
 @extends('master')
 @section('konten')
-    Tambah Anggota
-    <x-alert message="ini tambah anggota" type="success"/>
-     
-    <div class="mt-5 col-8 m-auto">
+    <div class="pageTitle">
+        <span>Tambah Anggota</span>
+    </div>
+    <div class="mt-5 col-5 m-auto">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        
         <form action="/anggota/store" method="post">
             @csrf
             <div class="mb-3">
