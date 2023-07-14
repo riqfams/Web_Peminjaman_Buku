@@ -6,7 +6,7 @@
         <span>Data {{ $anggota->nama }}</span>
     </div>
     <div class="row">
-        <div class="table-detail">
+        <div class="table-detail col-5 m-auto">
             <table class="table-div">
                 <tr>
                     <th>ID</th>
@@ -34,12 +34,8 @@
                 </tr>
             </table>
 
-            <a class="btnEdit" href="/buku/edit/{{$anggota->id}}">
-                <i class="bi bi-pencil-square">edit</i>
-            </a>
-            <a class="btnRemove" href="/buku/hapus/{{$anggota->id}}"> 
-                <i class="bi bi-trash">delete</i>
-            </a>
+            <a class="btn btn-primary" href="/anggota/edit/{{$anggota->id}}">Edit</a>
+            <a class="btn btn-danger" href="/anggota/hapus/{{$anggota->id}}">Delete</a>
             
         </div>
     </div>
