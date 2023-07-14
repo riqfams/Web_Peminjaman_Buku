@@ -6,12 +6,13 @@
     <div class="pageTitle">
         <span>List Peminjaman Buku</span>
     </div>
-    <div class="row">
-        <a class="btnAdd" href="/peminjamanBuku/tambah" role="button"> 
-            <i class="bi bi-plus-lg"></i>
-            <span class="btnLabel">Tambah data</span>
-        </a>
-        <div class="tableContainer">
+    <div>
+        <div class="d-flex justify-content-around mb-3">
+            <a class="btn btn-primary" href="/peminjamanBuku/tambah" role="button">Tambah Data</a>
+            <a class="btn btn-primary invisible" href="/peminjamanBuku/tambah" role="button">Tambah Data</a>
+            <a class="btn btn-primary invisible" href="/peminjamanBuku/tambah" role="button">Tambah Data</a>
+        </div>
+        <div class="tableContainer m-auto">
             <table class="table-div">
                 <thead class="thead-primary">
                     <tr>
@@ -34,12 +35,8 @@
                             <td>{{ $pb->tanggalPinjam }}</td>
                             <td>{{ $pb->tanggalKembali }}</td>
                             <td>
-                                <a class="btnEdit" href="/peminjamanBuku/edit/{{$pb->id}}">
-                                    <i class="bi bi-pencil-square">edit</i>
-                                </a>
-                                <a class="btnRemove" href="/peminjamanBuku/hapus/{{$pb->id}}"> 
-                                    <i class="bi bi-trash">apus</i>
-                                </a>
+                                <a class="btn btn-primary" href="/peminjamanBuku/edit/{{$pb->id}}">Edit</a>
+                                <a class="btn btn-danger" href="/peminjamanBuku/hapus/{{$pb->id}}">Delete</a>
                             </td>   
                         </tr>
                     @endforeach
