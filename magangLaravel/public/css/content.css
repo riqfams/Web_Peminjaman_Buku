@@ -43,9 +43,9 @@
     /* background-color: red; */
     margin: 15px;
     padding: 15px;
-    width: 100%;
+    width: 80%;
     border-radius: 10px;
-    box-shadow: 0px 0px 15px #04397f6b;
+    box-shadow: 0px 0px 10px #04397f6b;
 }
 
 .table-div{
