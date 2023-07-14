@@ -24,6 +24,6 @@ class AnggotaSeeder extends Seeder
         // ]);
         // Schema::enableForeignKeyConstraints();
 
-        Anggota::factory()->count(9)->create();
+        Anggota::factory()->count(20)->create();
     }
 }
