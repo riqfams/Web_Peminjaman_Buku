@@ -6,7 +6,7 @@
         <span>{{ $buku->judul }}</span>
     </div>
     <div class="row">
-        <div class="tableContainer">
+        <div class="table-detail col-5 m-auto">
             <table class="table-div">
                 <tr>
                     <th>ID Buku</th>
@@ -30,12 +30,8 @@
                 </tr>
             </table>
 
-            <a class="btnEdit" href="/buku/edit/{{$buku->id}}">
-                <i class="bi bi-pencil-square">edit</i>
-            </a>
-            <a class="btnRemove" href="/buku/hapus/{{$buku->id}}"> 
-                <i class="bi bi-trash">delete</i>
-            </a>
+            <a class="btn btn-primary" href="/buku/edit/{{$buku->id}}">Edit</a>
+            <a class="btn btn-danger" href="/buku/hapus/{{$buku->id}}">Delete</a>
             
         </div>
     </div>

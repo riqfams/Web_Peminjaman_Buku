@@ -9,12 +9,23 @@
     <div class="pageTitle">
         <span>List Buku</span>
     </div>
-    <div class="row">
-        <a class="btnAdd" href="/buku/tambah" role="button"> 
-            <i class="bi bi-plus-lg"></i>
-            <span class="btnLabel">Tambah data</span>
-        </a>
-        <div class="tableContainer">
+    <div>
+        <div class="d-flex justify-content-around mt-3 mb-3">
+            <a class="btn btn-primary" href="/buku/tambah" role="button">Tambah Data</a>
+            <a class="btn btn-primary invisible" role="button"></a>
+            <a class="btn btn-info" href="/buku/deleted" role="button">List Deleted Data</a>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="" method="get">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="keyword" placeholder="nama">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="tableContainer m-auto">
             <table class="table-div">
                 <thead class="thead-primary">
                     <tr>
@@ -35,15 +46,9 @@
                             <td>{{ $b->penerbit }}</td>
                             <td>{{ $b->tahunTerbit }}</td>
                             <td>
-                                <a class="btnDetail" href="/buku/detail/{{$b->id}}">
-                                    <i class="bi bi-pencil-square">detail</i>
-                                </a>
-                                <a class="btnEdit" href="/buku/edit/{{$b->id}}">
-                                    <i class="bi bi-pencil-square">edit</i>
-                                </a>
-                                <a class="btnRemove" href="/buku/hapus/{{$b->id}}"> 
-                                    <i class="bi bi-trash">delete</i>
-                                </a>
+                                <a class="btn btn-info" href="/buku/detail/{{$b->id}}">Detail</a>
+                                <a class="btn btn-primary" href="/buku/edit/{{$b->id}}">Edit</a>
+                                <a class="btn btn-danger" href="/buku/delete/{{$b->id}}">Delete</a>
                             </td>   
                         </tr>
                     @endforeach
