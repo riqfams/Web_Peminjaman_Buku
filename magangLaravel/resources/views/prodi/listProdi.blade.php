@@ -9,12 +9,12 @@
     <div class="pageTitle">
         <span>List Prodi</span>
     </div>
-    <div class="row">
-        <a class="btnAdd" href="/prodi/tambah" role="button"> 
-            <i class="bi bi-plus-lg"></i>
-            <span class="btnLabel">Tambah data</span>
-        </a>
-        <div class="tableContainer">
+    <div>
+        <div class="d-flex justify-content-around mb-3">
+            <a class="btn btn-primary" href="/prodi/tambah" role="button">Tambah Data</a>
+            <a class="btn btn-primary invisible" href="/prodi/tambah" role="button" >Tambah Data</a>
+        </div>
+        <div class="tableContainer col-8 m-auto">
             <table class="table-div">
                 <thead class="thead-primary">
                     <tr>
@@ -30,15 +30,9 @@
                             <td>{{ $p->name }}</td>
                             
                             <td>
-                                <a class="btnDetail" href="/prodi/detail/{{$p->id}}">
-                                    <i class="bi bi-pencil-square">Detail</i>
-                                </a>
-                                <a class="btnEdit" href="/prodi/edit/{{$p->id}}">
-                                    <i class="bi bi-pencil-square">edit</i>
-                                </a>
-                                <a class="btnRemove" href="/prodi/hapus/{{$p->id}}"> 
-                                    <i class="bi bi-trash">apus</i>
-                                </a>
+                                <a class="btn btn-info" href="/prodi/detail/{{$p->id}}">Detail</a>
+                                <a class="btn btn-primary" href="/prodi/edit/{{$p->id}}">Edit</a>
+                                <a class="btn btn-danger" href="/prodi/delete/{{$p->id}}">Delete</a>
                             </td>   
                         </tr>
                     @endforeach

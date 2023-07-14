@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Prodi;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\ProdiRequest;
 
 class ProdiController extends Controller
 {
@@ -22,7 +23,7 @@ class ProdiController extends Controller
         return view('prodi/tambahProdi');
     }
 
-    public function store(Request $request){
+    public function store(ProdiRequest $request){
         $prodi = Prodi::create($request->all());
         
         if($prodi){
@@ -37,13 +38,29 @@ class ProdiController extends Controller
         return view('prodi/editProdi', ['prodi' => $prodi]);
     }
 
-    public function update(Request $request, $id){
+    public function update(ProdiRequest $request, $id){
         $prodi = Prodi::findOrFail($id);
         $prodi->update($request->all());
 
         if($prodi){
             Session::flash('status', 'success');
             Session::flash('message', 'Data prodi berhasil diubah');
+        }
+        return redirect()->to('/prodi/list');
+    }
+
+    public function delete($id){
+        $prodi = Prodi::findOrFail($id);
+        return view('prodi/deleteProdi', ['prodi' => $prodi]);
+    }
+
+    public function destroy($id){
+        $prodi = Prodi::findOrFail($id);
+        $prodi->delete();
+
+        if($prodi){
+            Session::flash('status', 'success');
+            Session::flash('message', 'Data prodi berhasil dihapus');
         }
         return redirect()->to('/prodi/list');
     }

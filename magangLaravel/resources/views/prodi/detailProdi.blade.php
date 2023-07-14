@@ -6,7 +6,7 @@
         <span> Prodi {{ $prodi->name }}</span>
     </div>
     <div class="row">
-        <div class="tableContainer">
+        <div class="table-detail col-5 m-auto">
             <table class="table-div">
                 <tr>
                     <th>ID Prodi</th>
@@ -22,12 +22,8 @@
                 </tr>
             </table>
 
-            <a class="btnEdit" href="/buku/edit/{{$prodi->id}}">
-                <i class="bi bi-pencil-square">edit</i>
-            </a>
-            <a class="btnRemove" href="/buku/hapus/{{$prodi->id}}"> 
-                <i class="bi bi-trash">delete</i>
-            </a>
+            <a class="btn btn-primary" href="/prodi/edit/{{$prodi->id}}">Edit</a>
+            <a class="btn btn-danger" href="/prodi/hapus/{{$prodi->id}}">Delete</a>
             
         </div>
     </div>
