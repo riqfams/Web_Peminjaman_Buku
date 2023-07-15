@@ -6,8 +6,8 @@
     <div class="pageTitle">
         <span>List Deleted Anggota </span>
     </div>
-    <div class="row">
-        <div class="tableContainer">
+    <div>
+        <div class="tableContainer m-auto">
             <table class="table-div">
                 <thead class="thead-primary">
                     <tr>
