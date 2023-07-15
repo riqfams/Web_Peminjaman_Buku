@@ -22,9 +22,11 @@
                 </tr>
             </table>
 
-            <a class="btn btn-primary" href="/prodi/edit/{{$prodi->id}}">Edit</a>
-            <a class="btn btn-danger" href="/prodi/hapus/{{$prodi->id}}">Delete</a>
-            
+            @if (Auth::user()->role_id != 2)
+            @else
+                <a class="btn btn-primary" href="/prodi/edit/{{$prodi->id}}">Edit</a>
+                <a class="btn btn-danger" href="/prodi/hapus/{{$prodi->id}}">Delete</a>
+            @endif
         </div>
     </div>
 </div>

@@ -27,12 +27,15 @@
                     @foreach ($prodi as $p)
                         <tr>
                             <td>{{ $p->id }}</td>
-                            <td>{{ $p->name }}</td>
-                            
+                            <td>{{ $p->name }}</td>                       
                             <td>
-                                <a class="btn btn-info" href="/prodi/detail/{{$p->id}}">Detail</a>
-                                <a class="btn btn-primary" href="/prodi/edit/{{$p->id}}">Edit</a>
-                                <a class="btn btn-danger" href="/prodi/delete/{{$p->id}}">Delete</a>
+                                @if (Auth::user()->role_id != 2)
+                                    <a class="btn btn-info" href="/prodi/detail/{{$p->id}}">Detail</a>  
+                                @else
+                                    <a class="btn btn-info" href="/prodi/detail/{{$p->id}}">Detail</a>
+                                    <a class="btn btn-primary" href="/prodi/edit/{{$p->id}}">Edit</a>
+                                    <a class="btn btn-danger" href="/prodi/delete/{{$p->id}}">Delete</a>
+                                @endif                              
                             </td>   
                         </tr>
                     @endforeach

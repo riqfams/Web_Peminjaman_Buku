@@ -44,9 +44,13 @@
                             <td>{{ $a->nim }}</td>
                             <td>{{ $a->prodi['name'] }}</td>
                             <td>
-                                <a class="btn btn-info" href="/anggota/detail/{{$a->id}}">Detail</a>
-                                <a class="btn btn-primary" href="/anggota/edit/{{$a->id}}">Edit</a>
-                                <a class="btn btn-danger" href="/anggota/delete/{{$a->id}}">Hapus</a>
+                                @if (Auth::user()->role_id != 2)
+                                    <a class="btn btn-info" href="/anggota/detail/{{$a->id}}">Detail</a>
+                                @else
+                                    <a class="btn btn-info" href="/anggota/detail/{{$a->id}}">Detail</a>
+                                    <a class="btn btn-primary" href="/anggota/edit/{{$a->id}}">Edit</a>
+                                    <a class="btn btn-danger" href="/anggota/delete/{{$a->id}}">Hapus</a>
+                                @endif                               
                             </td>   
                         </tr>
                     @endforeach

@@ -36,7 +36,7 @@
         <div class="mb-3">
             <label for="nim">NIM</label>
             <input type="number" class="form-control" name="nim" id="nim" value="{{ $anggota->nim }}" required>
-        </div>
+        </div> 
         <div class="mb-3">
             <label for="prodi">Prodi</label>
             <select name="prodi_id" id="prodi" class="form-control" required>
