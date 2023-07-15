@@ -32,7 +32,18 @@ class BukuController extends Controller
     }
 
     public function store(BukuRequest $request){
-        $buku = Buku::create($request->all());
+
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $newName = now()->timestamp.'.'.$extension;
+        $tes = $request->file('image')->storeAs('imageBuku', $newName);
+
+        $buku = new Buku;
+        $buku->judul = $request->judul;
+        $buku->image = $tes;
+        $buku->penulis = $request->penulis;
+        $buku->penerbit = $request->penerbit;
+        $buku->tahunTerbit = $request->tahunTerbit;
+        $buku->save();
 
         if($buku){
             Session::flash('status', 'success');
@@ -46,9 +57,19 @@ class BukuController extends Controller
         return view('buku/editBuku', ['buku' => $buku]);
     }
 
-    public function update(BukuRequest $request, $id){
+    public function update(Request $request, $id){
         $buku = Buku::findOrFail($id);
-        $buku->update($request->all());
+
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $newName = now()->timestamp.'.'.$extension;
+        $tes = $request->file('image')->storeAs('imageBuku', $newName);
+
+        $buku->judul = $request->judul;
+        $buku->image = $tes;
+        $buku->penulis = $request->penulis;
+        $buku->penerbit = $request->penerbit;
+        $buku->tahunTerbit = $request->tahunTerbit;
+        $buku->save();
 
         if($buku){
             Session::flash('status', 'success');
