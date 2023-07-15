@@ -5,7 +5,7 @@
     @if (Session::has('status'))
         <x-alert message="{{ Session::get('message') }}" type="success"/>
     @endif
-    
+    <h4>Selamat datang, {{ Auth::user()->name }}, Anda masuk sebagai {{ Auth::user()->role->name }}</h4>
     <div class="pageTitle">
         <span>List Buku</span>
     </div>
@@ -31,6 +31,7 @@
                     <tr>
                         <th>No</th>
                         <th>Judul</th>
+                        <th>Cover</th>
                         <th>Penulis</th>
                         <th>Penerbit</th>
                         <th>Tahun Terbit</th>
@@ -42,13 +43,18 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $b->judul }}</td>
+                            <td><img src="{{ asset('storage/'.$b->image) }}" width="50px"></td>
                             <td>{{ $b->penulis }}</td>
                             <td>{{ $b->penerbit }}</td>
                             <td>{{ $b->tahunTerbit }}</td>
                             <td>
-                                <a class="btn btn-info" href="/buku/detail/{{$b->id}}">Detail</a>
-                                <a class="btn btn-primary" href="/buku/edit/{{$b->id}}">Edit</a>
-                                <a class="btn btn-danger" href="/buku/delete/{{$b->id}}">Delete</a>
+                                @if (Auth::user()->role_id != 2)
+                                    <a class="btn btn-info" href="/buku/detail/{{$b->id}}">Detail</a>
+                                @else
+                                    <a class="btn btn-info" href="/buku/detail/{{$b->id}}">Detail</a>
+                                    <a class="btn btn-primary" href="/buku/edit/{{$b->id}}">Edit</a>
+                                    <a class="btn btn-danger" href="/buku/delete/{{$b->id}}">Delete</a>
+                                @endif
                             </td>   
                         </tr>
                     @endforeach

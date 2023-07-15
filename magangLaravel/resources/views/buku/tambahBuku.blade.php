@@ -14,7 +14,7 @@
         </div>
         @endif
         
-        <form action="/buku/store" method="post">
+        <form action="/buku/store" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="judul">Judul</label>
@@ -32,9 +32,19 @@
                 <label for="tahunTerbit">Tahun Terbit</label>
                 <input type="number" class="form-control" name="tahunTerbit" id="tahunTerbit" required>
             </div>
+            <div class="mb-3">
+                <label for="image">Gambar Buku</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="image" id="image">
+                        <label class="custom-file-label" for="image">Choose file</label>
+                    </div>
+                </div>
+            </div>      
             <div class="mb-3 text-center">
                 <button type="submit" class="btn btn-success">Simpan</button>
             </div>
+            
         </form>
     </div>
 @endsection

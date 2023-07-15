@@ -5,7 +5,10 @@
     <div class="pageTitle">
         <span>{{ $buku->judul }}</span>
     </div>
-    <div class="row">
+    <div>
+        <div class="mb-3 d-flex justify-content-center">
+            <img src="{{ asset('storage/'.$buku->image) }}" alt="gambar buku" width="200px">
+        </div>
         <div class="table-detail col-5 m-auto">
             <table class="table-div">
                 <tr>
@@ -30,9 +33,12 @@
                 </tr>
             </table>
 
-            <a class="btn btn-primary" href="/buku/edit/{{$buku->id}}">Edit</a>
-            <a class="btn btn-danger" href="/buku/hapus/{{$buku->id}}">Delete</a>
-            
+            @if (Auth::user()->role_id != 2)
+            @else
+                <a class="btn btn-primary" href="/buku/edit/{{$buku->id}}">Edit</a>
+                <a class="btn btn-danger" href="/buku/hapus/{{$buku->id}}">Delete</a>      
+            @endif
+
         </div>
     </div>
 </div>
