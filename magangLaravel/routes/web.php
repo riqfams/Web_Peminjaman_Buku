@@ -32,6 +32,7 @@ Route::get('/buku/delete/{id}', 'App\Http\Controllers\BukuController@delete')->m
 Route::delete('/buku/destroy/{id}', 'App\Http\Controllers\BukuController@destroy')->middleware(['auth', 'mustAdmin']);
 Route::get('/buku/deleted', 'App\Http\Controllers\BukuController@deleted')->middleware(['auth', 'mustAdmin']);
 Route::get('/buku/{id}/restore', 'App\Http\Controllers\BukuController@restore')->middleware(['auth', 'mustAdmin']);
+Route::get('/buku-mass-update', 'App\Http\Controllers\BukuController@massUpdate');
 
 
 Route::get('/anggota/list', 'App\Http\Controllers\AnggotaController@list')->middleware('auth');
@@ -44,6 +45,7 @@ Route::get('/anggota/delete/{id}', 'App\Http\Controllers\AnggotaController@delet
 Route::delete('/anggota/destroy/{id}', 'App\Http\Controllers\AnggotaController@destroy')->middleware(['auth', 'mustAdmin']);
 Route::get('/anggota/deleted', 'App\Http\Controllers\AnggotaController@deleted')->middleware(['auth', 'mustAdmin']);
 Route::get('/anggota/{id}/restore', 'App\Http\Controllers\AnggotaController@restore')->middleware(['auth', 'mustAdmin']);
+Route::get('/anggota-mass-update', 'App\Http\Controllers\AnggotaController@massUpdate');
 
 
 Route::get('/prodi/list', 'App\Http\Controllers\ProdiController@list')->middleware('auth');
@@ -65,3 +67,6 @@ Route::get('peminjamanBuku/delete/{id}', 'App\Http\Controllers\PeminjamanBukuCon
 Route::delete('peminjamanBuku/destroy/{id}', 'App\Http\Controllers\PeminjamanBukuController@destroy')->middleware(['auth', 'mustAdmin']);
 Route::get('peminjamanBuku/deleted', 'App\Http\Controllers\PeminjamanBukuController@deleted')->middleware(['auth', 'mustAdmin']);
 Route::get('peminjamanBuku/{id}/restore', 'App\Http\Controllers\PeminjamanBukuController@restore')->middleware(['auth', 'mustAdmin']);
+
+
+Route::get('/mahasiswa', 'App\Http\Controllers\MahasiswaController@list')->middleware('auth');
