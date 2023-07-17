@@ -11,7 +11,7 @@ class Buku extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = 'buku';
-    protected $fillable = ['judul', 'image', 'penulis', 'penerbit', 'tahunTerbit'];
+    protected $fillable = ['judul', 'image', 'penulis', 'penerbit', 'tahunTerbit', 'slug'];
 
     public function anggota()
     {

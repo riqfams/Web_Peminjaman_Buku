@@ -14,7 +14,7 @@
         </div>
         @endif
         
-        <form action="/buku/update/{{ $buku->id }}" method="post" enctype="multipart/form-data">
+        <form action="/buku/update/{{ $buku->slug }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="mb-3">
@@ -37,7 +37,7 @@
                 <label for="image">Gambar Buku</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="image" id="image">
+                        <input type="file" class="custom-file-input" name="image" id="image" value="{{ $buku->image }}">
                         <label class="custom-file-label" for="image">Choose file</label>
                     </div>
                 </div>

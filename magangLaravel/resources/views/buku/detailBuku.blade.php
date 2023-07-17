@@ -35,8 +35,8 @@
 
             @if (Auth::user()->role_id != 2)
             @else
-                <a class="btn btn-primary" href="/buku/edit/{{$buku->id}}">Edit</a>
-                <a class="btn btn-danger" href="/buku/hapus/{{$buku->id}}">Delete</a>      
+                <a class="btn btn-primary" href="/buku/edit/{{$buku->slug}}">Edit</a>
+                <a class="btn btn-danger" href="/buku/delete/{{$buku->slug}}">Delete</a>      
             @endif
 
         </div>

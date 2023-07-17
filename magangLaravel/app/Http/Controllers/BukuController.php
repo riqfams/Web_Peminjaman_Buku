@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use App\Models\Buku;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\BukuRequest;
@@ -22,8 +23,8 @@ class BukuController extends Controller
         return view('buku/ListBuku',['buku' => $buku]); 
     }
     
-    public function detail($id) {
-        $buku = Buku::findOrFail($id);
+    public function detail($slug) {
+        $buku = Buku::where('slug', $slug)->first();
         return view('buku/detailBuku', ['buku' => $buku]);
     }
 
@@ -36,6 +37,7 @@ class BukuController extends Controller
         $extension = $request->file('image')->getClientOriginalExtension();
         $newName = now()->timestamp.'.'.$extension;
         $tes = $request->file('image')->storeAs('imageBuku', $newName);
+        $request['slug'] = Str::slug($request->judul, '-');
 
         $buku = new Buku;
         $buku->judul = $request->judul;
@@ -43,6 +45,7 @@ class BukuController extends Controller
         $buku->penulis = $request->penulis;
         $buku->penerbit = $request->penerbit;
         $buku->tahunTerbit = $request->tahunTerbit;
+        $buku->slug = $request['slug'];
         $buku->save();
 
         if($buku){
@@ -52,13 +55,13 @@ class BukuController extends Controller
         return redirect()->to('/buku/list');
     }
    
-    public function edit(Request $request, $id) {  
-        $buku = Buku::findOrFail($id);
+    public function edit($slug) {  
+        $buku = Buku::where('slug', $slug)->first();
         return view('buku/editBuku', ['buku' => $buku]);
     }
 
-    public function update(Request $request, $id){
-        $buku = Buku::findOrFail($id);
+    public function update(Request $request, $slug){
+        $buku = Buku::where('slug', $slug)->first();
 
         $extension = $request->file('image')->getClientOriginalExtension();
         $newName = now()->timestamp.'.'.$extension;
@@ -78,13 +81,13 @@ class BukuController extends Controller
         return redirect()->to('/buku/list');
     }
 
-    public function delete($id){
-        $buku = Buku::findOrFail($id);
+    public function delete($slug){
+        $buku = Buku::where('slug', $slug)->first();
         return view('buku/deleteBuku', ['buku' => $buku]);
     }
 
-    public function destroy($id){
-        $buku = Buku::findOrFail($id);
+    public function destroy($slug){
+        $buku = Buku::where('slug', $slug)->first();
         $buku->delete();
 
         if($buku){
@@ -107,5 +110,13 @@ class BukuController extends Controller
             Session::flash('message', 'Data buku berhasil dikembalikan');
         }
         return redirect()->to('/buku/list');
+    }
+
+    public function massUpdate(){
+        $buku = Buku::all();
+        collect($buku)->map(function($item){
+            $item->slug = Str::slug($item->judul, '-');
+            $item->save();
+        });
     }
 }
