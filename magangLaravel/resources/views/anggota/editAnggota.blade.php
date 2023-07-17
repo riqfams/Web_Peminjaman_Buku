@@ -15,7 +15,7 @@
     </div>
     @endif
     
-    <form action="/anggota/update/{{ $anggota->id }}" method="post">
+    <form action="/anggota/update/{{ $anggota->slug }}" method="post">
         @csrf
         @method('put')
         <div class="mb-3">

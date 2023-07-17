@@ -45,11 +45,11 @@
                             <td>{{ $a->prodi['name'] }}</td>
                             <td>
                                 @if (Auth::user()->role_id != 2)
-                                    <a class="btn btn-info" href="/anggota/detail/{{$a->id}}">Detail</a>
+                                    <a class="btn btn-info" href="/anggota/detail/{{$a->slug}}">Detail</a>
                                 @else
-                                    <a class="btn btn-info" href="/anggota/detail/{{$a->id}}">Detail</a>
-                                    <a class="btn btn-primary" href="/anggota/edit/{{$a->id}}">Edit</a>
-                                    <a class="btn btn-danger" href="/anggota/delete/{{$a->id}}">Hapus</a>
+                                    <a class="btn btn-info" href="/anggota/detail/{{$a->slug}}">Detail</a>
+                                    <a class="btn btn-primary" href="/anggota/edit/{{$a->slug}}">Edit</a>
+                                    <a class="btn btn-danger" href="/anggota/delete/{{$a->slug}}">Hapus</a>
                                 @endif                               
                             </td>   
                         </tr>

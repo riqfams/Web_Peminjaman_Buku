@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AnggotaRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use App\Models\Anggota;
 use App\Models\Prodi;
 use Illuminate\Support\Facades\Session;
@@ -24,8 +25,8 @@ class AnggotaController extends Controller
         return view('anggota/listAnggota',['anggota' => $anggota]); 
     }
     
-    public function detail($id) {
-        $anggota = Anggota::findOrFail($id);
+    public function detail($slug) {
+        $anggota = Anggota::where('slug', $slug)->first();
         return view('anggota/detailAnggota', ['anggota' => $anggota]);
     }
 
@@ -35,11 +36,14 @@ class AnggotaController extends Controller
     }
    
     public function store(AnggotaRequest $request){
-        // $validated = $request->validate([
-        //     'nim' => 'unique:anggota|max:10'
-        // ]);
-
-        $anggota = Anggota::create($request->all());
+        $anggota = new Anggota;
+        $anggota->nama = $request->nama;
+        $anggota->kelamin = $request->kelamin;
+        $anggota->nim = $request->nim;
+        $anggota->prodi_id = $request->prodi_id;
+        $anggota->alamat = $request->alamat;
+        $anggota->slug = $request['slug'];
+        $anggota->save();
 
         if($anggota){
             Session::flash('status', 'success');
@@ -48,15 +52,23 @@ class AnggotaController extends Controller
         return redirect()->to('/anggota/list');
     }
 
-    public function edit(Request $request, $id){
-        $anggota = Anggota::with('prodi')->findOrFail($id);
+    public function edit($slug){
+        $anggota = Anggota::with('prodi')->where('slug', $slug)->first();
         $prodi = Prodi::where('id', '!=', $anggota->prodi_id)->get(['id', 'name']);
         return view('anggota/editAnggota', ['anggota' => $anggota, 'prodi' => $prodi]);
     }
 
-    public function update(AnggotaRequest $request, $id) {
-        $anggota = Anggota::findOrFail($id);
-        $anggota->update($request->all());
+    public function update(AnggotaRequest $request, $slug) {
+        $anggota = Anggota::where('slug', $slug)->first();
+        $request['slug'] = Str::slug($request->nama, '-');
+
+        $anggota->nama = $request->nama;
+        $anggota->kelamin = $request->kelamin;
+        $anggota->nim = $request->nim;
+        $anggota->prodi_id = $request->prodi_id;
+        $anggota->alamat = $request->alamat;
+        $anggota->slug = $request['slug'];
+        $anggota->save();
 
         if($anggota){
             Session::flash('status', 'success');
@@ -65,13 +77,13 @@ class AnggotaController extends Controller
         return redirect()->to('/anggota/list');
     }
 
-    public function delete($id){
-        $anggota = Anggota::findOrFail($id);
+    public function delete($slug){
+        $anggota = Anggota::where('slug', $slug)->first();
         return view('anggota/deleteAnggota', ['anggota' => $anggota]);
     }
 
-    public function destroy($id){
-        $anggota = Anggota::findOrFail($id);
+    public function destroy($slug){
+        $anggota = Anggota::where('slug', $slug)->first();
         $anggota->delete();
 
         if($anggota){
@@ -94,5 +106,13 @@ class AnggotaController extends Controller
             Session::flash('message', 'Data anggota berhasil dikembalikan');
         }
         return redirect()->to('/anggota/list');
+    }
+
+    public function massUpdate(){
+        $anggota = Anggota::all();
+        collect($anggota)->map(function($item){
+            $item->slug = Str::slug($item->nama, '-');
+            $item->save();
+        });
     }
 }
