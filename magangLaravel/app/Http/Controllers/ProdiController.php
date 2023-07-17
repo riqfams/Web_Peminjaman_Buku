@@ -14,8 +14,8 @@ class ProdiController extends Controller
         return view('prodi/listProdi', ['prodi' => $prodi]);
     }
 
-    public function detail($id){
-        $prodi = Prodi::findOrFail($id);
+    public function detail($name){
+        $prodi = Prodi::where('name', $name)->first();
         return view('prodi/detailProdi', ['prodi' => $prodi]);
     }
 

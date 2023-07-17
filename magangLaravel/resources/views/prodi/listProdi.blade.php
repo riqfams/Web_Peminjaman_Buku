@@ -30,9 +30,9 @@
                             <td>{{ $p->name }}</td>                       
                             <td>
                                 @if (Auth::user()->role_id != 2)
-                                    <a class="btn btn-info" href="/prodi/detail/{{$p->id}}">Detail</a>  
+                                    <a class="btn btn-info" href="/prodi/detail/{{$p->name}}">Detail</a>  
                                 @else
-                                    <a class="btn btn-info" href="/prodi/detail/{{$p->id}}">Detail</a>
+                                    <a class="btn btn-info" href="/prodi/detail/{{$p->name}}">Detail</a>
                                     <a class="btn btn-primary" href="/prodi/edit/{{$p->id}}">Edit</a>
                                     <a class="btn btn-danger" href="/prodi/delete/{{$p->id}}">Delete</a>
                                 @endif                              
