@@ -8,7 +8,7 @@
 </head>
 <body>
     <h4 class="d-flex justify-content-center align-items-center text-center">Tes Email Berhasil</h4>
-    <div class="tableContainer m-auto">
+    {{-- <div class="tableContainer m-auto">
         <table class="table-div">
             <thead class="thead-primary">
                 <tr>
@@ -29,6 +29,6 @@
                 @endforeach
             </tbody>
         </table>
-    </div>        
+    </div>         --}}
 </body>
 </html>
