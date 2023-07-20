@@ -94,6 +94,11 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function(){
     Route::get('peminjamanBuku/{id}/restore', 'App\Http\Controllers\PeminjamanBukuController@restore');
 });
 
+
+
+
+
+
 //------------------------------- PLAYLIST TIPS AND TRIK LARAVEL -------------------------------//
 Route::get('/mahasiswa', 'App\Http\Controllers\MahasiswaController@list')->middleware('auth');
 
@@ -153,3 +158,8 @@ Route::get('tambah-anggota-prodi', function(){
 
 // Tes Email
 Route::get('/tes-email', 'App\Http\Controllers\EmailController@tes');
+
+// Laravel Events
+Route::get('/create-user', 'App\Http\Controllers\UserController@create');
+Route::get('/delete-user/{id}', 'App\Http\Controllers\UserController@delete');
+
