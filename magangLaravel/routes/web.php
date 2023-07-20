@@ -159,7 +159,15 @@ Route::get('tambah-anggota-prodi', function(){
 // Tes Email
 Route::get('/tes-email', 'App\Http\Controllers\EmailController@tes');
 
+// Queue Email
+Route::get('/send-emails', 'App\Http\Controllers\EmailController@sendEmails');
+
 // Laravel Events
 Route::get('/create-user', 'App\Http\Controllers\UserController@create');
 Route::get('/delete-user/{id}', 'App\Http\Controllers\UserController@delete');
+
+//Polymorphic Relations
+Route::get('/users', 'App\Http\Controllers\UserController@list');
+Route::get('/posts', 'App\Http\Controllers\PostController@list');
+
 
