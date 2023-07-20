@@ -34,7 +34,7 @@ class AnggotaController extends Controller
         $prodi = Prodi::select('id', 'name')->get();
         return view('anggota/tambahAnggota', ['prodi' => $prodi]);
     }
-   
+
     public function store(AnggotaRequest $request){
         $anggota = new Anggota;
         $anggota->nama = $request->nama;
