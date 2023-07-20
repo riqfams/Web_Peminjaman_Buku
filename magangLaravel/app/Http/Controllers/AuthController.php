@@ -23,10 +23,6 @@ class AuthController extends Controller
             return redirect()->intended('/');
         }
 
-        // return back()->withErrors([
-        //     'email' => 'Email Anda salah'
-        // ])->onlyInput('email');
-
         Session::flash('status', 'failed');
         Session::flash('message', 'Login Gagal');
 

@@ -13,7 +13,7 @@ class Anggota extends Model
 
     protected $table = 'anggota';
     protected $fillable = ['nama', 'kelamin', 'nim', 'prodi_id', 'alamat', 'slug'];
-   
+
     public function prodi()
     {
         return $this->belongsTo(Prodi::class, 'prodi_id');
