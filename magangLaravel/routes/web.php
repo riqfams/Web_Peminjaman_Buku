@@ -167,7 +167,10 @@ Route::get('/create-user', 'App\Http\Controllers\UserController@create');
 Route::get('/delete-user/{id}', 'App\Http\Controllers\UserController@delete');
 
 //Polymorphic Relations
+//------1. One to One
 Route::get('/users', 'App\Http\Controllers\UserController@list');
 Route::get('/posts', 'App\Http\Controllers\PostController@list');
 
-
+//------2. One to Many
+Route::get('/videos', 'App\Http\Controllers\VideoController@list');
+Route::get('/video-detail/{id}', 'App\Http\Controllers\VideoController@detail');
