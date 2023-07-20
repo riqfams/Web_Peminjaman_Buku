@@ -5,7 +5,7 @@
     @if (Session::has('status'))
         <x-alert message="{{ Session::get('message') }}" type="success"/>
     @endif
-    <h4>Selamat datang, {{ Auth::user()->name }}, Anda masuk sebagai {{ Auth::user()->role->name }}</h4>
+    <h4 class="text-center">Selamat datang, {{ Auth::user()->name }}, Anda masuk sebagai {{ Auth::user()->role->name }}</h4>
     <div class="pageTitle">
         <span>List Buku</span>
     </div>
