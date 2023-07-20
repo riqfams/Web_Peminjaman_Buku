@@ -3,26 +3,22 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Address;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
 
-class TesEmail extends Mailable
+class Emails extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public $anggota;
-
-    public function __construct($anggota)
+    public function __construct()
     {
-        $this->anggota = $anggota;
+        //
     }
 
     /**
@@ -31,7 +27,7 @@ class TesEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Selamat, Anda terdaftar sebagai User',
+            subject: 'Latihan Queue Email',
         );
     }
 
@@ -52,8 +48,6 @@ class TesEmail extends Mailable
      */
     public function attachments(): array
     {
-        return [
-            Attachment::fromPath(public_path('doc/test-txt.txt')),
-        ];
+        return [];
     }
 }
