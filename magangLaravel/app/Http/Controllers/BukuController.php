@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use App\Events\BukuCreated;
+use App\Events\BukuDeleted;
+use App\Events\BukuUpdated;
 use App\Models\Buku;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Http\Requests\BukuRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class BukuController extends Controller
 {
@@ -52,6 +55,9 @@ class BukuController extends Controller
             Session::flash('status', 'success');
             Session::flash('message', 'Data buku berhasil ditambahkan');
         }
+        
+        BukuCreated::dispatch($buku);
+
         return redirect()->to('/buku/list');
     }
 
@@ -78,6 +84,9 @@ class BukuController extends Controller
             Session::flash('status', 'success');
             Session::flash('message', 'Data buku berhasil diubah');
         }
+
+        BukuUpdated::dispatch($buku);
+
         return redirect()->to('/buku/list');
     }
 
@@ -94,6 +103,9 @@ class BukuController extends Controller
             Session::flash('status', 'success');
             Session::flash('message', 'Data buku berhasil dihapus');
         }
+
+        BukuDeleted::dispatch($buku);
+
         return redirect()->to('/buku/list');
     }
 
