@@ -28,4 +28,9 @@ class UserController extends Controller
 
         UserDeleted::dispatch($user);
     }
+
+    public function list(){
+        $users = User::with('image')->get();
+        return view('user', ['users' => $users]);
+    }
 }
