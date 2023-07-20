@@ -54,7 +54,7 @@ class BukuController extends Controller
         }
         return redirect()->to('/buku/list');
     }
-   
+
     public function edit($slug) {  
         $buku = Buku::where('slug', $slug)->first();
         return view('buku/editBuku', ['buku' => $buku]);
