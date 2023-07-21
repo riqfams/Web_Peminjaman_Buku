@@ -22,7 +22,7 @@ use Spatie\Permission\Models\Permission;
 
 
 Route::get('/login', 'App\Http\Controllers\AuthController@login')->name('login')->middleware('guest');
-Route::post('/login', 'App\Http\Controllers\AuthController@authentication')->middleware('guest');
+Route::post('/login', 'App\Http\Controllers\AuthController@authentication')->middleware(['guest', 'throttle:login']);
 Route::get('/logout', 'App\Http\Controllers\AuthController@logout')->middleware('auth');
 
 // Route::get('/', 'App\Http\Controllers\BukuController@list')->middleware('auth');
@@ -166,10 +166,12 @@ Route::get('/send-emails', 'App\Http\Controllers\EmailController@sendEmails');
 Route::get('/create-user', 'App\Http\Controllers\UserController@create');
 Route::get('/delete-user/{id}', 'App\Http\Controllers\UserController@delete');
 
+
 //Polymorphic Relations
 //------1. One to One
 Route::get('/users', 'App\Http\Controllers\UserController@list');
 Route::get('/posts', 'App\Http\Controllers\PostController@list');
+Route::get('/post-detail/{id}', 'App\Http\Controllers\PostController@detail');
 
 //------2. One to Many
 Route::get('/videos', 'App\Http\Controllers\VideoController@list');
