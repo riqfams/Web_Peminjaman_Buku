@@ -10,11 +10,11 @@ class VideoController extends Controller
 {
     public function list(){
         $videos = Video::all();
-        return view('video', ['videos' => $videos]);
+        return view('video/video', ['videos' => $videos]);
     }
 
     public function detail($id){
         $video = Video::findOrFail($id);
-        return view('detailVideo', ['video' => $video]);
+        return view('video/detailVideo', ['video' => $video]);
     }
 }

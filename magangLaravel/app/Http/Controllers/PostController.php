@@ -10,6 +10,11 @@ class PostController extends Controller
 {
     public function list(){
         $posts = Post::with('image')->get();
-        return view('post', ['posts' => $posts]);
+        return view('post/post', ['posts' => $posts]);
+    }
+
+    public function detail($id){
+        $post = Post::findOrFail($id);
+        return view('post/detailpost', ['post' => $post]);
     }
 }
