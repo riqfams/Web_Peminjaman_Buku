@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AnggotaRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use App\Models\Anggota;
+use Carbon\Carbon;
 use App\Models\Prodi;
+use App\Models\Anggota;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Exports\AnggotaExport;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Requests\AnggotaRequest;
 use Illuminate\Support\Facades\Session;
 
 class AnggotaController extends Controller
@@ -114,5 +117,12 @@ class AnggotaController extends Controller
             $item->slug = Str::slug($item->nama, '-');
             $item->save();
         });
+    }
+
+    public function export() 
+    {
+        //return Excel::download(new AnggotaExport, 'anggota-'.Carbon::now()->timestamp.'.xlsx');
+        return (new AnggotaExport)->download('anggota-'.Carbon::now()->timestamp.'.xlsx');
+        return redirect()->to('/anggota/list');
     }
 }
