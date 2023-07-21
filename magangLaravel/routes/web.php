@@ -68,6 +68,9 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function(){
     Route::get('/anggota/{id}/restore', 'App\Http\Controllers\AnggotaController@restore');
 });
 Route::get('/anggota-mass-update', 'App\Http\Controllers\AnggotaController@massUpdate');
+// Export Data
+Route::get('/anggota/export', 'App\Http\Controllers\AnggotaController@export');
+
 
 
 Route::get('/prodi/list', 'App\Http\Controllers\ProdiController@list')->middleware('auth');
@@ -176,3 +179,6 @@ Route::get('/post-detail/{id}', 'App\Http\Controllers\PostController@detail');
 //------2. One to Many
 Route::get('/videos', 'App\Http\Controllers\VideoController@list');
 Route::get('/video-detail/{id}', 'App\Http\Controllers\VideoController@detail');
+
+
+
