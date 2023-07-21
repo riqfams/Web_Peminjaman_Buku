@@ -14,6 +14,7 @@
             <a class="btn btn-primary" href="/anggota/tambah">Tambah Data</a>
             <a class="btn btn-info" href="/anggota/deleted">List Deleted Data</a>
             <a class="btn btn-primary" href="/prodi/list">List Prodi</a>
+            <a class="btn btn-info" href="/anggota/export">Download Data</a>
         </div>
         <div class="row justify-content-center">
             <div class="col-12 col-sm-8 col-md-4">
