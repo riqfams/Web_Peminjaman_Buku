@@ -34,15 +34,20 @@
             </select>
         </div>
         <div class="mb-3">
+            <label for="nik">NIK</label>
+            <input type="number" class="form-control" name="nik" id="nik" value="{{ $anggota->ktp->nik }}" required>
+        </div> 
+        <div class="mb-3">
             <label for="nim">NIM</label>
             <input type="number" class="form-control" name="nim" id="nim" value="{{ $anggota->nim }}" required>
         </div> 
         <div class="mb-3">
             <label for="prodi">Prodi</label>
             <select name="prodi_id" id="prodi" class="form-control" required>
-                <option value="{{ $anggota->prodi->id }}">{{ $anggota->prodi->name }}</option>
                 @foreach ($prodi as $p)
-                    <option value="{{ $p->id }}">{{ $p->name }}</option>
+                    <option value="{{ $p->id }}" @if($p->id == $anggota->prodi->id) selected @endif>
+                        {{ $p->name }}
+                    </option>
                 @endforeach
             </select>
         </div>

@@ -29,6 +29,10 @@
                 </select>
             </div>
             <div class="mb-3">
+                <label for="nik">NIK</label>
+                <input type="number" class="form-control" name="nik" id="nik" required>
+            </div>
+            <div class="mb-3">
                 <label for="nim">NIM</label>
                 <input type="number" class="form-control" name="nim" id="nim" required>
             </div>

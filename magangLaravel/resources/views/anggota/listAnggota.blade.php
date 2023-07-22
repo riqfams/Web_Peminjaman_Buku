@@ -32,6 +32,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
+                        <th>NIK</th>
                         <th>NIM</th>
                         <th>Prodi</th>
                         <th></th>
@@ -42,6 +43,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $a->nama }}</td>
+                            <td>{{ $a->ktp['nik'] }}</td>
                             <td>{{ $a->nim }}</td>
                             <td>{{ $a->prodi['name'] }}</td>
                             <td>
