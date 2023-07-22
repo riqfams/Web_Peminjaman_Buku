@@ -57,6 +57,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $buku->withQueryString()->links() }}
         </div>
     </div>
 </div>
