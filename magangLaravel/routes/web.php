@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,17 @@ Route::get('/login', 'App\Http\Controllers\AuthController@login')->name('login')
 Route::post('/login', 'App\Http\Controllers\AuthController@authentication')->middleware(['guest', 'throttle:login']);
 Route::get('/logout', 'App\Http\Controllers\AuthController@logout')->middleware('auth');
 
+Route::get('/register', 'App\Http\Controllers\AuthController@register')->middleware('guest');
+Route::post('/register', 'App\Http\Controllers\AuthController@registerProcess')->middleware('guest');
+Route::get('/email/verify', function () {
+    return view('register.verify-email');
+})->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/buku/list');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
 // Route::get('/', 'App\Http\Controllers\BukuController@list')->middleware('auth');
 // Route::get('/buku/list', 'App\Http\Controllers\BukuController@list')->middleware('auth');
 // Route::get('/buku/detail/{id}', 'App\Http\Controllers\BukuController@detail')->middleware('auth');
@@ -39,8 +51,8 @@ Route::get('/logout', 'App\Http\Controllers\AuthController@logout')->middleware(
 // Route::get('/buku-mass-update', 'App\Http\Controllers\BukuController@massUpdate');
 
 
-Route::get('/', 'App\Http\Controllers\BukuController@list')->middleware('auth');
-Route::get('/buku/list', 'App\Http\Controllers\BukuController@list')->middleware('auth');
+Route::get('/', 'App\Http\Controllers\BukuController@list')->middleware(['auth', 'verified']);
+Route::get('/buku/list', 'App\Http\Controllers\BukuController@list')->middleware(['auth', 'verified']);
 Route::get('/buku/detail/{id}', 'App\Http\Controllers\BukuController@detail')->middleware('auth');
 Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     Route::get('/buku/tambah', 'App\Http\Controllers\BukuController@tambah');
